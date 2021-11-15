@@ -23,6 +23,7 @@
                             <td>
                                 {{ $post->post_date }}
                             </td>
+                            <td> <a href="#"> <i class="fas fa-pencil-alt"></i> </a> </td>
                         </tr>
                     @empty
                         <tr>
