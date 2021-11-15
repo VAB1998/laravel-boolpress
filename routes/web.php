@@ -23,4 +23,10 @@ Route::middleware('auth')->get('/admin', function() {
     return view('admin.home');
 })->name('admin.home');
 
-
+Route::middleware('auth')
+    ->namespace('Admin')
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function() {
+        Route::resource('/posts','PostController');
+    });
