@@ -8,8 +8,6 @@
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
                     <th scope="col">Publication date</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
                 </thead>
                 <tbody>
                     @forelse ($posts as $post)
@@ -23,7 +21,6 @@
                             <td>
                                 {{ $post->post_date }}
                             </td>
-                            <td> <a href="#"> <i class="fas fa-pencil-alt"></i> </a> </td>
                         </tr>
                     @empty
                         <tr>
@@ -35,6 +32,8 @@
                     
                 </tbody>
             </table>
+
+            <a class="btn btn-primary" href=" {{ route('admin.posts.create') }} ">Add a new Post</a>
         </div>
     </section>
 @endsection
