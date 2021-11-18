@@ -3,6 +3,13 @@
 @section('content')
     <section id="index_posts">
         <div class="container">
+            @if (session('deleted_title'))
+            <div class="alert alert-info" role="alert">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                {{ session('alert_message') }}
+            </div>
+
+            @endif
             <table class="table table-light table-striped table-bordered">
                 <thead>
                     <th scope="col">Title</th>
