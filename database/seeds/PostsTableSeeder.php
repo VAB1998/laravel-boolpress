@@ -18,7 +18,6 @@ class PostsTableSeeder extends Seeder
     {
         for($i=0; $i < 5; $i++){
             $category_ids = Category::pluck('id')->toArray();
-            $user_ids = User::pluck('id')->toArray();
 
             $newPost = new Post();
             $newPost->title = $faker->sentence(4);
