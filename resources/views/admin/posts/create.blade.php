@@ -15,10 +15,6 @@
                 <div class="mb-3">
                     <input class="form-control form-control-lg" type="text" id="author" name="author" placeholder="Author">      
                 </div>
-
-                {{-- <div class="mb-3">
-                    <input class="form-control form-control-lg" type="text" id="post_date" name="post_date" placeholder="Date : yyyy-mm--dd">      
-                </div> --}}
                 
                 <div class="mb-3">
                     <textarea class="form-control" id="post_content" name="post_content" rows="3" placeholder="Content"></textarea>

@@ -8,6 +8,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
                     <th scope="col">Publication date</th>
+                    <th scope="col"></th>
                 </thead>
                 <tbody>
                     @forelse ($posts as $post)
@@ -21,18 +22,30 @@
                             <td>
                                 {{ $post->post_date }}
                             </td>
+                            <td>
+                                {{-- Update --}}
+                                <a href=" {{ route('admin.posts.edit', $post) }} "> Edit</a>
+                            </td>
+                            {{-- Delete --}}
+                            <td>
+                                <form action="{{route('admin.posts.destroy', $post )}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn" type="submit">Delete</a>
+                                </form>
+                            </td>
                         </tr>
                     @empty
                         <tr>
                             <td>
-                                No Article found
+                                No Post found
                             </td>
                         </tr>
                     @endforelse
                     
                 </tbody>
             </table>
-
+            {{-- Create --}}
             <a class="btn btn-primary" href=" {{ route('admin.posts.create') }} ">Add a new Post</a>
         </div>
     </section>
