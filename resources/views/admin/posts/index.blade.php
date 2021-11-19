@@ -28,6 +28,14 @@
                                 {{ $post->author }}
                             </td>
                             <td>
+                                @forelse ($post->tags as $tag)
+                                
+                                    <span class="bagde badge-pill" style="background-color: {{ $tag->color}} ">{{$tag->name}}</span>
+                                @empty
+                                    Post with no tags.
+                                @endforelse
+                            </td>
+                            <td>
                                 {{ $post->post_date }}
                             </td>
                             {{-- Update --}}
