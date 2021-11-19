@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Post;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -27,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $tags = Tag::all();
+
+        return view('admin.posts.create', compact('tags'));
     }
 
     /**
@@ -40,10 +43,14 @@ class PostController extends Controller
     {
         $data = $request->all();
         $data['post_date'] = Carbon::now();
+
         $post = new Post();
         $post->fill($data);
         $post->slug = Str::slug($post->title, '-');
         $post->save();
+
+        //Prima di poter creare un collegamento con la tabella ponte devo creare e salvare il post (e il suo id) e poi... 
+        if(array_key_exists('tags', $data)) $post->tags()->sync($data['tags']);
 
         return redirect()->route('admin.posts.show', $post);
     }
@@ -96,6 +103,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if ($post->tags) $post->tags()->detach();
+        
         $post->delete();
         
         return redirect()->route('admin.posts.index')
