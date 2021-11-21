@@ -14,6 +14,8 @@
                 <thead>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Tags</th>
                     <th scope="col">Publication date</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -26,6 +28,13 @@
                             </td>
                             <td>
                                 {{ $post->author }}
+                            </td>
+                            <td>
+                                @if ($post->category) 
+                                    <span class="badge badge-primary px-4">{{ $post->category->name }} </span>
+                                @else 
+                                    Uncategorized post 
+                                @endif 
                             </td>
                             <td>
                                 @forelse ($post->tags as $tag)

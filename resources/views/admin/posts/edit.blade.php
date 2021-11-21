@@ -19,6 +19,15 @@
                     value=" {{ $post->author }} ">      
                 </div>
 
+                <select class="form-control form-control-lg w-50" name="category_id">
+                    <option value="">None</option>
+                    @foreach ($categories as $category)
+                        <option value=" {{ $category->id }} " @if ( $post->category_id == $category->id ) selected @endif > 
+                            {{ $category->name }} 
+                        </option>
+                    @endforeach
+                </select>
+
                 @foreach ($tags as $tag)
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="tag_{{ $tag->id }}" value="{{ $tag->id }}" name="tags[]"

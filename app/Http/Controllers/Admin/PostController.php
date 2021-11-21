@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 
@@ -19,7 +20,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));    }
+        return view('admin.posts.index', compact('posts'));    
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -29,8 +31,9 @@ class PostController extends Controller
     public function create()
     {
         $tags = Tag::all();
+        $categories = Category::all();
 
-        return view('admin.posts.create', compact('tags'));
+        return view('admin.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -75,12 +78,13 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $tags = Tag::all();
+        $categories = Category::all(); 
 
         //Per poter visualizzare i tags come array nella edit svolgiamo la "logica" nel controller
         //Convert the collection to an array of tag ids to use it in the edit.
         $tagIds = $post->tags->pluck('id')->toArray();
 
-        return view('admin.posts.edit', compact('post', 'tags', 'tagIds'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'tagIds'));
     }
 
     /**

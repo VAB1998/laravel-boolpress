@@ -12,7 +12,7 @@ class Post extends Model
     protected $fillable = ['title', 'author', 'post_content', 'post_date', 'category_id'];
 
     public function category(){
-        $this->belongsTo('App\Models\Category');
+        return $this->belongsTo('App\Models\Category');
     }
 
     public function tags(){
