@@ -30,10 +30,12 @@ class PostController extends Controller
      */
     public function create()
     {
+        $post = new Post();
         $tags = Tag::all();
         $categories = Category::all();
+        $tagIds = $post->tags->pluck('id')->toArray();
 
-        return view('admin.posts.create', compact('categories', 'tags'));
+        return view('admin.posts.create', compact('post', 'categories', 'tags', 'tagIds'));
     }
 
     /**
@@ -44,6 +46,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|unique:posts|max:127',
+            'post_content' => 'required|string|min:40',
+            'category_id' => "nullable"
+        ]);
+
         $data = $request->all();
         $data['post_date'] = Carbon::now();
 
@@ -96,6 +104,12 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        $request->validate([
+            'title' => 'required|max:127',
+            'post_content' => 'required|string|min:40',
+            'category_id' => "nullable"
+        ]);
+
         $data = $request->all();
         $data['post_date'] = Carbon::now();
         $post->fill($data);
