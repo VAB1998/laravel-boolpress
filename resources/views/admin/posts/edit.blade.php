@@ -18,12 +18,21 @@
                     <input class="form-control form-control-lg" type="text" id="author" name="author" placeholder="Author"
                     value=" {{ $post->author }} ">      
                 </div>
+
+                @foreach ($tags as $tag)
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="tag_{{ $tag->id }}" value="{{ $tag->id }}" name="tags[]"
+                        @if ( in_array($tag->id, old("tags", $tagIds ? $tagIds : [] ))) checked @endif >
+                        <label class="form-check-label" for="tag_{{ $tag->id }}"> {{ $tag->name }} </label>
+                    </div>
+                @endforeach
                 
                 <div class="mb-3">
                     <textarea class="form-control" id="post_content" name="post_content" rows="3" placeholder="Content">{{ $post->post_content }}</textarea>
                 </div>
                 
                 <button type="submit" class="btn btn-success">Submit</button>                        
+                <button type="reset" class="btn btn-danger">Reset</button>                        
             </form>
         </div>        
     </section>

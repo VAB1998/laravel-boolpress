@@ -74,7 +74,13 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit', compact('post'));
+        $tags = Tag::all();
+
+        //Per poter visualizzare i tags come array nella edit svolgiamo la "logica" nel controller
+        //Convert the collection to an array of tag ids to use it in the edit.
+        $tagIds = $post->tags->pluck('id')->toArray();
+
+        return view('admin.posts.edit', compact('post', 'tags', 'tagIds'));
     }
 
     /**
@@ -92,6 +98,10 @@ class PostController extends Controller
         $post->slug = Str::slug($post->title, '-');
         $post->update();
 
+        // Se ci sono dei tags popolati if(array_key_exists('tags', $data)), prendili (post->tags())
+        // e inseriscili come UNICI valori possibili dentro al nostro ogetto sync($data['tags'])
+        if(array_key_exists('tags', $data)) $post->tags()->sync($data['tags']);
+
         return redirect()->route('admin.posts.show', compact('post'));
     }
 
@@ -104,7 +114,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         if ($post->tags) $post->tags()->detach();
-        
+
         $post->delete();
         
         return redirect()->route('admin.posts.index')
