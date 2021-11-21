@@ -113,6 +113,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        //Remove all the connections between Post and Tag (1to1)
         if ($post->tags) $post->tags()->detach();
 
         $post->delete();

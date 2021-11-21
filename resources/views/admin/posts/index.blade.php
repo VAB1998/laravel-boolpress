@@ -29,8 +29,7 @@
                             </td>
                             <td>
                                 @forelse ($post->tags as $tag)
-                                
-                                    <span class="bagde badge-pill" style="background-color: {{ $tag->color}} ">{{$tag->name}}</span>
+                                    <span class="badge" style="background-color: {{ $tag->color}} ">{{$tag->name}}</span>
                                 @empty
                                     Post with no tags.
                                 @endforelse
