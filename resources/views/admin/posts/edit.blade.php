@@ -32,7 +32,7 @@
                 <select class="form-control form-control-lg w-50" name="category_id">
                     <option value="">None</option>
                     @foreach ($categories as $category)
-                        <option value=" {{ $category->id }} "  @if ( $post->category_id == $category->id ) selected @endif > 
+                        <option value=" {{ $category->id }} "  @if ( old('category_id', $post->category_id) == $category->id ) selected @endif > 
                             {{ $category->name }} 
                         </option>
                     @endforeach

@@ -50,7 +50,7 @@
                     <textarea class="form-control" id="post_content" name="post_content" rows="3" placeholder="Content">{{ old('post_content', $post->post_content) }}</textarea>
                 </div>
                 
-                {{-- <button type="reset" class="btn btn-danger">Reset</button> --}}
+                <button type="reset" class="btn btn-danger">Reset</button>
                 <button type="submit" class="btn btn-success">Submit</button>                        
             </form>
         </div>          
