@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -54,6 +55,7 @@ class PostController extends Controller
 
         $data = $request->all();
         $data['post_date'] = Carbon::now();
+        $data['user_id'] = Auth::user()->id;
 
         $post = new Post();
         $post->fill($data);
@@ -112,6 +114,8 @@ class PostController extends Controller
 
         $data = $request->all();
         $data['post_date'] = Carbon::now();
+        $data['user_id'] = Auth::user()->id;
+
         $post->fill($data);
         $post->slug = Str::slug($post->title, '-');
         $post->update();

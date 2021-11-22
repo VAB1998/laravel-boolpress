@@ -24,10 +24,10 @@
                     value="{{ old('title', $post->title) }}">       
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <input class="form-control form-control-lg" type="text" id="author" name="author" placeholder="Author"
                     value="{{ old('author', $post->author) }}">      
-                </div>
+                </div> --}}
 
                 <select class="form-control form-control-lg w-50" name="category_id">
                     <option value="">None</option>

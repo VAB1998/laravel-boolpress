@@ -27,7 +27,7 @@
                                 <a href=" {{ route('admin.posts.show', $post) }} "> {{ $post->title }} </a>
                             </td>
                             <td>
-                                {{ $post->author }}
+                                {{ $post->user->name }}
                             </td>
                             <td>
                                 @if ($post->category) 
