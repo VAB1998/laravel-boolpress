@@ -20,10 +20,11 @@ class PostsTableSeeder extends Seeder
         for($i=0; $i < 5; $i++){
             $category_ids = Category::pluck('id')->toArray();
             $tag_ids = Tag::pluck('id')->toArray();
+            $user_ids = User::pluck('id')->toArray();
 
             $newPost = new Post();
             $newPost->title = $faker->sentence(4);
-            $newPost->author = $faker->name();
+            $newPost->user_id = Arr::random($user_ids);
             $newPost->post_date = $faker->dateTime();
             $newPost->post_content = $faker->paragraphs(6, true);
             $newPost->slug = Str::slug($newPost->title, '-');
