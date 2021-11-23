@@ -13,6 +13,10 @@
                 @else
                     <h2 class="text-center">Hai già effettuato l'accesso, <a href=" {{ route('admin.home') }} ">Clicca Qui</a></h2>
                 @endguest
+
+                <div class="root">
+                    
+                </div>
         </div>
     </section>
 @endsection   
