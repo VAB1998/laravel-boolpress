@@ -1,12 +1,15 @@
 <template>
     <div class="post_list">
-        <h1 v-for="post in posts" :key="post.id">
-            {{ post.title }}
-        </h1>
+
+        <PostCard v-for="post in posts" :key="post.id" 
+        :title="post.title" :content="post.post_content" :date="post.post_date" />
+
     </div>
 </template>
 
 <script>
+    import PostCard from './PostCard.vue'
+
     export default {
         name: 'PostList',
 
@@ -18,6 +21,7 @@
         },
 
         components: {
+            PostCard
         },
 
         methods: {
