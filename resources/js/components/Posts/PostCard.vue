@@ -1,8 +1,10 @@
 <template>
     <div class="card">
-        {{ title }} <br>
-        {{ date }} <br>
-        {{ content }} <br>
+        <div class="card-body">
+            <h5 class="card-title"> {{ title }} </h5>
+            <h6 class="card-subtitle text-muted"> {{ date }} </h6>
+            <p class="card-text"> {{ content }} </p>
+        </div>
     </div>
 </template>
 

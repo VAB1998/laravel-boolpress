@@ -1945,6 +1945,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostCard',
   props: {
@@ -2517,12 +2519,19 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card" }, [
-    _vm._v("\n    " + _vm._s(_vm.title) + " "),
-    _c("br"),
-    _vm._v("\n    " + _vm._s(_vm.date) + " "),
-    _c("br"),
-    _vm._v("\n    " + _vm._s(_vm.content) + " "),
-    _c("br"),
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title" }, [
+        _vm._v(" " + _vm._s(_vm.title) + " "),
+      ]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "card-subtitle text-muted" }, [
+        _vm._v(" " + _vm._s(_vm.date) + " "),
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text" }, [
+        _vm._v(" " + _vm._s(_vm.content) + " "),
+      ]),
+    ]),
   ])
 }
 var staticRenderFns = []
