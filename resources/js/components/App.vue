@@ -1,10 +1,13 @@
 <template>
     <div class="posts_list">
-        <h1>CiaoCiaoCiaoCiaoCiaoCiaoCiaoCiaoCiaoCiao</h1>
+        <PostList />
     </div>
 </template>
 
 <script>
+
+    import PostList from "./Posts/PostList.vue"
+
     export default {
         name: 'App',
 
@@ -14,6 +17,7 @@
         },
 
         components: {
+            PostList
         }
     }
 </script>
