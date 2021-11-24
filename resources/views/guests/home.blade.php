@@ -6,15 +6,15 @@
             
                 @guest
                     <h2 class="text-center">
-                        Se sei registrato effettua il 
+                        if you are already registered please
                         <a href="{{ route('login') }}">{{ __('Login') }}</a>
-                        , oppure  
-                        <a href="{{ route('register') }}">Registrati</a></h2>
+                        , otherwise
+                        <a href="{{ route('register') }}">Sign in</a></h2>
                 @else
                     <h2 class="text-center">Hai già effettuato l'accesso, <a href=" {{ route('admin.home') }} ">Clicca Qui</a></h2>
                 @endguest
 
-                <h2> <a href=" {{ route('guests.posts') }} ">Vai</a> </h2>
+                <h2 class="text-center"> <a href=" {{ route('guests.posts.index') }} ">Go to Posts</a> </h2>
         </div>
     </section>
 @endsection   

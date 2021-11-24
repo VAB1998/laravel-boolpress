@@ -17,26 +17,34 @@ Route::get('/', function () {
     return redirect()->route('guests.home');
 }); 
 
-Route::get('/guest/home', function () {
-    return view('guests.home');
-})->name('guests.home'); 
+Route::namespace('Guest')->name('guests.')->group(function () {
+    
+    Route::get('/home', 'HomeController')->name('home');
 
-Route::prefix('guests')->group(function() {
-    Route::get('/posts', function () {
-        return view('guests.posts');
-    })->name('guests.posts');
+    Route::resource('/posts', 'PostController');
 });
 
-Auth::routes();
+// Route::get('/guest/home', function () {
+//     return view('guests.home');
+// })->name('guests.home'); 
 
-Route::middleware('auth')->get('/admin', function() {
-    return view('admin.home');
-})->name('admin.home');
+// Route::prefix('guests')->group(function() {
+//     Route::get('/posts', function () {
+//         return view('guests.posts');
+//     })->name('guests.posts');
+// });
+
+Auth::routes();
 
 Route::middleware('auth')
     ->namespace('Admin')
     ->name('admin.')
     ->prefix('admin')
     ->group(function() {
+
         Route::resource('/posts','PostController');
+        
+        Route::get('/', function() {
+            return view('admin.home');
+        })->name('home');
     });
