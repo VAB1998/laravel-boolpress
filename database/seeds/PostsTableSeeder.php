@@ -17,7 +17,7 @@ class PostsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for($i=0; $i < 5; $i++){
+        for($i=0; $i < 20; $i++){
             $category_ids = Category::pluck('id')->toArray();
             $tag_ids = Tag::pluck('id')->toArray();
             $user_ids = User::pluck('id')->toArray();

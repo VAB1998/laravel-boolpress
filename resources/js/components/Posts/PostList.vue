@@ -2,7 +2,7 @@
     <div class="post_list">
 
         <PostCard v-for="post in posts" :key="post.id" 
-        :title="post.title" :content="post.post_content" :date="post.post_date" />
+        :title="post.title" :content="post.post_content" :date="post.post_date" />        
 
     </div>
 </template>
@@ -16,7 +16,7 @@
         data() {
             return {
                 posts : [],
-                baseUri : 'http://127.0.0.1:8000'
+                baseUri : 'http://127.0.0.1:8000',
             }
         },
 

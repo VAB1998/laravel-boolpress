@@ -14,11 +14,7 @@
                     <h2 class="text-center">Hai già effettuato l'accesso, <a href=" {{ route('admin.home') }} ">Clicca Qui</a></h2>
                 @endguest
 
-                <div id="root">
-                    
-                </div>
+                <h2> <a href=" {{ route('guests.posts') }} ">Vai</a> </h2>
         </div>
     </section>
-
-    <script src="{{ asset('js/front.js')}}"></script>
 @endsection   

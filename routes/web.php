@@ -14,7 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return redirect()->route('guests.home');
+}); 
+
+Route::get('/guest/home', function () {
     return view('guests.home');
+})->name('guests.home'); 
+
+Route::prefix('guests')->group(function() {
+    Route::get('/posts', function () {
+        return view('guests.posts');
+    })->name('guests.posts');
 });
 
 Auth::routes();
