@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,16 +23,6 @@ Route::namespace('Guest')->name('guests.')->group(function () {
 
     Route::resource('/posts', 'PostController');
 });
-
-// Route::get('/guest/home', function () {
-//     return view('guests.home');
-// })->name('guests.home'); 
-
-// Route::prefix('guests')->group(function() {
-//     Route::get('/posts', function () {
-//         return view('guests.posts');
-//     })->name('guests.posts');
-// });
 
 Auth::routes();
 
