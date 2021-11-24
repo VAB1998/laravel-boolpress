@@ -1947,12 +1947,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'PostCard',
   props: {
     title: String,
     content: String,
-    date: String
+    date: String,
+    author: String,
+    category: String
   }
 });
 
@@ -2525,7 +2528,11 @@ var render = function () {
       ]),
       _vm._v(" "),
       _c("h6", { staticClass: "card-subtitle text-muted" }, [
-        _vm._v(" " + _vm._s(_vm.date) + " "),
+        _vm._v(" " + _vm._s(_vm.author) + " - " + _vm._s(_vm.date) + " "),
+      ]),
+      _vm._v(" "),
+      _c("h6", { staticClass: "badge badge-primary px-4" }, [
+        _vm._v(" " + _vm._s(_vm.category) + " "),
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "card-text" }, [
@@ -2566,6 +2573,8 @@ var render = function () {
           title: post.title,
           content: post.post_content,
           date: post.post_date,
+          author: post.user.name,
+          category: post.category.name,
         },
       })
     }),

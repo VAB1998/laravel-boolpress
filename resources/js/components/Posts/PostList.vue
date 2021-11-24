@@ -2,7 +2,7 @@
     <div class="post_list">
 
         <PostCard v-for="post in posts" :key="post.id" 
-        :title="post.title" :content="post.post_content" :date="post.post_date" />        
+        :title="post.title" :content="post.post_content" :date="post.post_date" :author="post.user.name" :category="post.category.name" />        
 
     </div>
 </template>
