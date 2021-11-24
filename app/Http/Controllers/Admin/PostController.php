@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -107,7 +108,11 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => 'required|max:127',
+            'title' => [
+                'required',
+                Rule::unique('posts')->ignore($post),
+                'max:127'
+            ],
             'post_content' => 'required|string|min:40',
             'category_id' => "nullable"
         ]);
