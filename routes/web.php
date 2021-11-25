@@ -17,12 +17,18 @@ Route::get('/', function () {
     return redirect()->route('guests.home');
 }); 
 
-Route::namespace('Guest')->name('guests.')->group(function () {
+Route::namespace('Guest')
+    ->name('guests.')
+    ->group(function () {
     
-    Route::get('/home', 'HomeController')->name('home');
+        Route::get('/home', 'HomeController')->name('home');
 
-    Route::resource('/posts', 'PostController');
-});
+        Route::resource('/posts', 'PostController');
+
+        Route::get('/contact-us', 'ContactUsController@contactUs')->name('contactUs');
+        Route::post('/contact-us', 'ContactUsController@sendMail')->name('contactUs.send');
+        Route::get('/contact-us/thanks', 'ContactUsController@thanks')->name('contactUs.thanks');
+    });
 
 Auth::routes();
 
