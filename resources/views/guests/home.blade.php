@@ -15,6 +15,7 @@
                 @endguest
 
                 <h2 class="text-center"> <a href=" {{ route('guests.posts.index') }} ">Go to Posts</a> </h2>
+                <h2 class="text-center"> <a href=" {{ route('guests.contactUs') }} ">Go Contact Us</a> </h2>
         </div>
     </section>
 @endsection   
