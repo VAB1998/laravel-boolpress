@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-// use App\Mail\ContactUsMail as SendMail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\ContactUsMail;
+use App\Mail\SendContactUsMail;
+use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
 {
@@ -20,6 +21,8 @@ class ContactUsController extends Controller
         // dd($contactUsMail);
         $contactUsMail->fill($data);
         $contactUsMail->save();
+
+        Mail::to('boolpress@live.com')->send(new SendContactUsMail($contactUsMail));
 
         return redirect()->route('guests.home');
     }
