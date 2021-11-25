@@ -15,6 +15,13 @@ class ContactUsController extends Controller
     }
 
     public function sendMail(Request $request){
+
+        $request->validate([
+            'name' => 'required|max:32',
+            'address' => 'required|email',
+            'message' => 'required',
+        ]);
+    
         $data = $request->all();
 
         $contactUsMail = new ContactUsMail();

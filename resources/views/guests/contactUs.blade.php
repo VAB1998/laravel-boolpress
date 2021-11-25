@@ -3,6 +3,15 @@
 @section('content')
     <section id="guests_contact_us">
         <div class="container">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>        
+            @endif
             <a href="{{ route('guests.home') }}">Go to the Home</a>
             <form action=" {{ route('guests.contactUs.send') }} " method="POST">
 
